@@ -1,0 +1,36 @@
+﻿<Window x:Class="media_player.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:media_player"
+        mc:Ignorable="d"
+        Title="Media Player" Height="400" Width="800">
+    <Grid Background="SeaShell">
+        
+        <StackPanel x:Name="mainContainer" Orientation="Vertical" Margin="0,0,0,10">
+            <StackPanel.Background>
+                <ImageBrush ImageSource="E:\Semester4\C#\Assignment1\images/background.jpg"></ImageBrush>
+            </StackPanel.Background>
+            <Menu>
+                <MenuItem Header="File" >
+                    <MenuItem x:Name="Open" Click="Open_Click" Header="Open MP3" IsCheckable="False"></MenuItem>
+                    <MenuItem x:Name="TagCurrent" Click="TagCurrent_Click" Header="Tag CurrentMP3" IsCheckable="False"></MenuItem>
+                    <Separator/>
+                    <MenuItem x:Name="Exit" Click="Exit_Click" Header="Exit" IsCheckable="False"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Media">
+                    <MenuItem x:Name="Play" Click="Play_Click" Header="Play"  IsCheckable="False"></MenuItem>
+                    <MenuItem x:Name="Pause" Click="Pause_Click" Header="Pause" IsCheckable="False"></MenuItem>
+                    <MenuItem x:Name="Stop" Click="Stop_Click" Header="Stop" IsCheckable="False"></MenuItem>
+                </MenuItem>
+            </Menu>
+            <MediaElement  Visibility="Collapsed" Width="100" x:Name="myMediaPlayer" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>
+            <Button  Content="Show Tags" FontSize="22" Margin="10" Click="showTags_Click" Visibility="Collapsed"></Button>
+            <Button Content="Edit Tags" FontSize="22" x:Name="EditTags_Click" Click="EditTags_Click_1" Visibility="Collapsed" />
+            <local:NowPlaying x:Name="player1" Visibility="Hidden" />
+            <local:TagEditing x:Name="player2" Visibility="Hidden" />
+            <ListBox  Background="Azure" x:Name="PlayList_ListBox"  d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListBox_SelectionChanged"/>
+        </StackPanel>
+    </Grid>
+</Window>
